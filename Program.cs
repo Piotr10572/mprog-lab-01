@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace mprog_lab_01
 {
@@ -6,9 +7,24 @@ namespace mprog_lab_01
     {
         static void Main(string[] args)
         {
-            for(int i=0;i<10;i++)
-            Console.WriteLine(i+":Hello World!");
-            
+            try
+            {
+                StreamReader sr = null;
+                sr = new StreamReader("/home/mint/Desktop/doc");
+                Console.WriteLine(sr.ReadToEnd());
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine($"File not found{ex.FileName}");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
 
         }
     }
